@@ -1,9 +1,14 @@
 import React from 'react';
-import css from './Filter.module.css'; // Make sure this path is correct
+import { useSelector, useDispatch } from 'react-redux';
+import css from './Filter.module.css';
+import { setFilter } from '../../PhonebookRedux/contactsSlice'; // Adjust the path as necessary
 
-export const Filter = ({ filter, setFilter }) => {
+export const Filter = () => {
+  const filter = useSelector(state => state.contacts.filter);
+  const dispatch = useDispatch();
+
   const handleFilterChange = e => {
-    setFilter(e.target.value);
+    dispatch(setFilter(e.target.value));
   };
 
   return (
